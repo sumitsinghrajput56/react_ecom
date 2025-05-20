@@ -13,7 +13,7 @@ function Header()
   const user=JSON.parse(localStorage.getItem('user-info'));
   const navigate = useNavigate();
 
-  console.log(user.name);
+  
   
 
   function Logout() {
@@ -40,7 +40,8 @@ function Header()
        
             {
               localStorage.getItem('user-info')?<Nav>
-                   <NavDropdown title={user && user.name}>
+                   <NavDropdown title={user ? user.name : 'User'}>
+
               <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
               <NavDropdown.Item onClick={Logout}>Profile</NavDropdown.Item>
             </NavDropdown>
