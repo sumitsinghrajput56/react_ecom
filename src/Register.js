@@ -8,7 +8,7 @@ function Register() {
         {
             navigate('/add');
         }
-    });
+    },[]);
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -43,21 +43,21 @@ navigate('/add');
       <br></br>
       <input
         type="text"
-        name={name}
+        value={name}
         className="form-control"
         onChange={(e) => setName(e.target.value)}
       />
       <br></br>
       <input
         type="text"
-        name={email}
+        value={email}
         className="form-control"
         onChange={(e) => setEmail(e.target.value)}
       />
       <br></br>
       <input
         type="text"
-        name={password}
+        value={password}
         className="form-control"
         onChange={(e) => setPassword(e.target.value)}
       />

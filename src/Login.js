@@ -7,7 +7,7 @@ function Login() {
     if (localStorage.getItem("user-info")) {
       navigate("/add");
     }
-  });
+  },[]);
   const navigate = useNavigate();
 
   return (
