@@ -14,8 +14,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/add-product" element={<AddProduct />} />
-          <Route path="/update-product" element={<UpdateProduct />} />
+          <Route path="/add" element={<AddProduct />} />
+          <Route path="/update" element={<UpdateProduct />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
