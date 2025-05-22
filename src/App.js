@@ -26,7 +26,7 @@ function App() {
             }
           />
           <Route
-            path="/update"
+            path="/update/:id"
             element={
               <Protected cmp={UpdateProduct}>
                 <UpdateProduct />

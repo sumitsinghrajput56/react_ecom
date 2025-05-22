@@ -1,6 +1,8 @@
 import Header from "./Header";
 import React,{useState,useEffect} from "react";
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import { Link, Navigate } from 'react-router-dom';
 
 
 function ProductList()
@@ -8,6 +10,11 @@ function ProductList()
     const [data,setData]=useState([]);
 
    useEffect(() => {
+  
+
+    fetchData();
+  }, []);
+
     const fetchData = async () => {
       try {
         const response = await fetch("http://127.0.0.1:8000/api/list");
@@ -19,8 +26,16 @@ function ProductList()
       }
     };
 
-    fetchData();
-  }, []);
+  async function deleteData(id)
+  {
+        let DeleteResult=await fetch("http://127.0.0.1:8000/api/products/delete/"+id,{
+            method:"DELETE",
+        });
+        DeleteResult=await DeleteResult.json();
+        fetchData();
+        
+        
+  }
 
     return(
         <div>
@@ -35,6 +50,7 @@ function ProductList()
           <th>Description</th>
           <th>Price</th>
           <th>Image</th>
+          <th>Operations</th>
         </tr>
       </thead>
       <tbody>
@@ -48,11 +64,12 @@ function ProductList()
       <td>{item.price}</td>
       <td>
         <img
-          src={`http://localhost:3000/product/${item.file_path}`}
+          src={`http://localhost:3000/api/product/${item.file_path}`}
           alt={item.name}
           width="80"
         />
       </td>
+      <td><Button onClick={()=>deleteData(item.id)} variant="danger">Delete</Button>&nbsp;&nbsp;<Link to={"/update/"+item.id} variant="primary"><span>Update</span></Link></td>
     </tr>
   );
 })
