@@ -8,6 +8,7 @@ import UpdateProduct from "./UpdateProduct";
 import Register from "./Register";
 import Protected from "./Protected";
 import ProductList from "./ProductList";
+import SearchProduct from "./SearchProduct";
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
             }
           />
           <Route
+            path="/search"
+            element={
+              <Protected cmp={SearchProduct}>
+                <SearchProduct />
+              </Protected>
+            }
+          />
+          <Route
             path="/"
             element={
               <Protected cmp={ProductList}>
@@ -41,6 +50,7 @@ function App() {
               </Protected>
             }
           />
+          
         </Routes>
         </switch>
       </BrowserRouter>
