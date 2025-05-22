@@ -7,11 +7,13 @@ import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
 import Register from "./Register";
 import Protected from "./Protected";
+import ProductList from "./ProductList";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <switch>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -31,7 +33,16 @@ function App() {
               </Protected>
             }
           />
+          <Route
+            path="/"
+            element={
+              <Protected cmp={ProductList}>
+                <UpdateProduct />
+              </Protected>
+            }
+          />
         </Routes>
+        </switch>
       </BrowserRouter>
     </div>
   );
